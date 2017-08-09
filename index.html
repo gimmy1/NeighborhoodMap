@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>New York's Brooklyn</title>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<!-- VIEW - HTML markup that defines the appearance of your UI -->
+
+<div class="container">
+
+	<!-- Search/List Area-->
+	<div class="container">
+
+		<!-- Search/List Area -->
+		<div class="col-md-3 text-container">
+			<h1>Tribeca</h1>
+			<div id="search">
+				<input placeholder="Search.." type="search" data-bind="textInput: query" autocomplete="off">
+			</div>
+			<ul data-bind="foreach: filteredLocations" class="desktop-list" autocomplete="off">
+				<li data-bind="text: title, click: $parent.populateInfoWindow"></li>
+			</ul>
+			<p id="error" data-bind='visible: ajaxError'>
+				There appears to be a bad request. The internet will resolve! Till then enjoy the bouncing markers
+			</p>
+		</div>
+
+		<!-- Google Maps -->
+		<div class="col-md-9 map-container">
+			<div id="google-map" class="main-map"></div>
+		</div>
+	</div>
+
+	<script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+	<script src="bower_components/knockout/dist/knockout.js" charset="utf-8"></script>
+	<script src="js/model.js"></script>
+	<script src="js/main.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=geometry,drawing&key=AIzaSyB13r-Y7MSv_xu31SelklOmZh-wfvh1zBU&callback=initialize" async defer onerror="googleMapsError()">
+	</script>
+
+	</body>
+
+</html>
